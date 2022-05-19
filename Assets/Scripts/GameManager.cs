@@ -7,7 +7,8 @@ using TMPro;
 public class GameManager : MonoBehaviour
 {
     public TextMeshProUGUI moneyTxt; 
-    int money;
+    public GameObject[] positionT; 
+    int money, randNum = 0;
     protected float time; 
     protected int oneSecond = 1; 
 
@@ -22,6 +23,15 @@ public class GameManager : MonoBehaviour
     {
         time += Time.deltaTime; 
 
+        //Esta función aumenta el valor * segundo del dinero. 
+        PlusQuantity(); 
+        //Esta función es para que al tocar una vez aumente más rápido el dinero. 
+        Touch(); 
+          
+    }
+
+    public void PlusQuantity()
+    {
         if(time >= oneSecond)
         {
 
@@ -29,23 +39,26 @@ public class GameManager : MonoBehaviour
             moneyTxt.text = money.ToString() ;
             time = 0f;  
         }
-
-        Touch(); 
-          
     }
 
     public void Touch()
     {
         if(Input.GetMouseButtonDown(0))
         {
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-   	        RaycastHit hit;
    	        // Casts the ray and get the first game object hit
-   	        Physics.Raycast(ray, out hit);
+   	        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero);
    	        if(hit.collider.gameObject.CompareTag("Boobs"))
-               {
-                   money++; 
-               }
+            {
+                money++;
+            }
         }
     }
+
+/*
+    public void Event_Teleport()
+    {
+        positionT[randNum] = Random.Range(0,7);
+         
+    }
+    */
 }
