@@ -10,7 +10,9 @@ public class GameManager : MonoBehaviour
     public GameObject[] positionT; 
     int money, randNum = 0;
     protected float time; 
-    protected int oneSecond = 1; 
+    protected int oneSecond = 1;
+    public AudioSource audioS;
+    public AudioClip clipCoin;   
 
     // Start is called before the first frame update
     void Start()
@@ -50,6 +52,7 @@ public class GameManager : MonoBehaviour
    	        if(hit.collider.gameObject.CompareTag("Boobs"))
             {
                 money++;
+                audioS.PlayOneShot(clipCoin);
             }
         }
     }
