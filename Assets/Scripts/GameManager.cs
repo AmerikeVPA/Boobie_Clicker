@@ -6,7 +6,8 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public TextMeshProUGUI moneyTxt; 
+    public TextMeshProUGUI moneyTxt, tips; 
+    public string[] txt; 
     public GameObject[] positionT; 
     int money, randNum = 0;
     protected float time, timeEvent; 
@@ -23,7 +24,8 @@ public class GameManager : MonoBehaviour
         timeEvent += Time.deltaTime;  
         if(timeEvent > 25)
         {
-            StartCoroutine(RandomEvent());
+            //StartCoroutine(RandomEvent());
+            Tip(); 
             time = 0; 
         }
         //Esta función aumenta el valor * segundo del dinero. 
@@ -77,6 +79,12 @@ public class GameManager : MonoBehaviour
         {
             
         }
+    }
+
+    public void Tip()
+    {
+        int num = Random.Range(0, 18); 
+        tips.text = txt[num]; 
     }
 
      public IEnumerator RandomEvent()
