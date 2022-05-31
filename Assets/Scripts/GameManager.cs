@@ -6,44 +6,31 @@ using TMPro;
 
 public class GameManager : MonoBehaviour
 {
-    public TextMeshProUGUI moneyTxt, tips; 
+    public Animator anim; 
+    public TextMeshProUGUI tips; 
     public string[] txt; 
     public GameObject[] positionT; 
     int money, randNum = 0;
-    protected float time, timeEvent; 
-    protected int oneSecond = 1;
+    protected float timeEvent; 
     protected int num = 1;
-    public GameObject boobs; 
+    public GameObject boobs, panel;
+    public bool randomNumber = true; 
     public AudioSource audioS;
     public AudioClip clipCoin;   
 
     // Update is called once per frame
     void Update()
     {
-        time += Time.deltaTime; 
+
         timeEvent += Time.deltaTime;  
-        if(timeEvent > 25)
+        if(timeEvent > 35)
         {
             //StartCoroutine(RandomEvent());
             Tip(); 
-            time = 0; 
+            timeEvent = 0;
+            Debug.Log("0"); 
         }
-        //Esta función aumenta el valor * segundo del dinero. 
-        PlusQuantity(); 
-        //Esta función es para que al tocar una vez aumente más rápido el dinero. 
-        Touch(); 
-          
-    }
-
-    public void PlusQuantity()
-    {
-        if(time >= oneSecond)
-        {
-
-            money++;
-            moneyTxt.text = money.ToString() ;
-            time = 0f;  
-        }
+        Touch();  
     }
 
     public void Touch()
@@ -81,11 +68,27 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    //Esta función activa el tip y la animación, para después en la animación mandar llamar a la función de abajo.
     public void Tip()
     {
-        int num = Random.Range(0, 18); 
-        tips.text = txt[num]; 
+        anim.SetBool("scroll", true);
+        if(randomNumber == true)
+		{
+            int num = Random.Range(0, 18);
+            tips.text = txt[num];
+            randomNumber = false; 
+        }
+         
     }
+
+    //Esto desactiva la animación.
+    public void TipOff()
+	{
+        anim.SetBool("scroll", false);
+        randomNumber = false; 
+	}
+
+
 
      public IEnumerator RandomEvent()
     {
