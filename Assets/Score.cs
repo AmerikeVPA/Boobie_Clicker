@@ -5,7 +5,7 @@ using TMPro;
 
 public class Score : MonoBehaviour
 {
-    int money;
+    public int money;
     protected float time = 0;
     protected int oneSecond = 1, num = 1;
     public TextMeshProUGUI moneyTxt;
