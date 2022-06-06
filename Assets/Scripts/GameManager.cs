@@ -27,7 +27,6 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
         timeEvent += Time.deltaTime;  
         if(timeEvent > 35)
         {
@@ -38,7 +37,6 @@ public class GameManager : MonoBehaviour
         } 
     }
 
-
     //Esta función activa el tip y la animación, para después en la animación mandar llamar a la función de abajo.
     public void Tip()
     {
@@ -48,8 +46,7 @@ public class GameManager : MonoBehaviour
             int num = Random.Range(0, 17);
             tips.text = txt[num];
             randomNumber = false; 
-        }
-         
+        }         
     }
     //Esto desactiva la animación.
     public void TipOff()
@@ -57,7 +54,6 @@ public class GameManager : MonoBehaviour
         anim.SetBool("scroll", false);
         randomNumber = true; 
 	}
-
 
     //Esto te quita dinero de tu cartera y luego despliega la imagen de un hombre o mujer. 
     public void ImageUnlock()
@@ -68,37 +64,27 @@ public class GameManager : MonoBehaviour
             score.money -= 1000;
             display = true;
 		}
-		else
-		{
-            anim.SetBool("naked", true);
-        }
+		else { anim.SetBool("naked", true); }
 	}
-    public void ImageOff()
-	{
-        anim.SetBool("naked", false);
-    }
-
+    public void ImageOff() { anim.SetBool("naked", false); }
     public void Boobs()
 	{
-        if(boobsO.activeInHierarchy == false)
-		{
-            Debug.Log("enter");
+        if(boobsO.activeInHierarchy == true) { Debug.Log("true"); }
+        else {
+
             dickO.SetActive(false);
             bootyO.SetActive(false);
             boobsO.SetActive(true);
-        }
-        
+        }        
 	}
     public void Booty()
 	{
-        if (boobsO.activeInHierarchy == false)
-        {
+        if (boobsO.activeInHierarchy == true) { Debug.Log("true"); }
+		else {
             dickO.SetActive(false);
             boobsO.SetActive(true);
             bootyO.SetActive(false);
         }
-	
-
     }
 
     public void Dick()
@@ -109,7 +95,6 @@ public class GameManager : MonoBehaviour
             boobsO.SetActive(false);
             dickO.SetActive(true);
         }
-
     }
 
     /*
