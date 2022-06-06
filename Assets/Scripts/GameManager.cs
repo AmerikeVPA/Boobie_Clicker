@@ -80,13 +80,9 @@ public class GameManager : MonoBehaviour
 
     public void Boobs()
 	{
-        if(boobsO.activeInHierarchy == true)
+        if(boobsO.activeInHierarchy == false)
 		{
-            Debug.Log("true"); 
-        }
-        else
-		{
-
+            Debug.Log("enter");
             dickO.SetActive(false);
             bootyO.SetActive(false);
             boobsO.SetActive(true);
@@ -95,16 +91,13 @@ public class GameManager : MonoBehaviour
 	}
     public void Booty()
 	{
-        if (boobsO.activeInHierarchy == true)
+        if (boobsO.activeInHierarchy == false)
         {
-            Debug.Log("true");
-        }
-		else
-		{
             dickO.SetActive(false);
-            boobsO.SetActive(false);
+            boobsO.SetActive(true);
             bootyO.SetActive(false);
         }
+	
 
     }
 
