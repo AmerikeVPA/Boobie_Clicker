@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI; 
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro; 
 
 public class GameManager : MonoBehaviour
@@ -23,6 +24,8 @@ public class GameManager : MonoBehaviour
     public Score score; 
 
     public bool display = false; 
+
+    public void ChangeScene(string sceneName) { SceneManager.LoadScene(sceneName); }
 
     // Update is called once per frame
     void Update()

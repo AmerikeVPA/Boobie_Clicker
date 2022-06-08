@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class MinigameManager : MonoBehaviour
 {
     public List<string> Steps = new List<string>();
     public TextMeshPro selfExamInstruction;
 
+    public void ChangeScene(string sceneName) { SceneManager.LoadScene(sceneName); }
     public void MoveImages(GameObject imageToMove)
     {
         Vector3 endV3 = new Vector3(imageToMove.transform.localPosition.x - 650f, imageToMove.transform.localPosition.y, imageToMove.transform.localPosition.z);

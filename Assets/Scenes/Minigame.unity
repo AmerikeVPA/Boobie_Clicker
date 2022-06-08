@@ -5121,14 +5121,14 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1243731300}
         m_TargetAssemblyTypeName: MinigameManager, Assembly-CSharp
-        m_MethodName: DestroyObj
-        m_Mode: 2
+        m_MethodName: ChangeScene
+        m_Mode: 5
         m_Arguments:
-          m_ObjectArgument: {fileID: 280142815}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: SampleScene
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!222 &733343245
