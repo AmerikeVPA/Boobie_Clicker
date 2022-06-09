@@ -1,31 +1,34 @@
+using TMPro;
 using UnityEngine;
 using System.Runtime.InteropServices;
 
 public class JavaFunctions : MonoBehaviour {
 
+    int money, images;
+    string user, gender;
+
     [DllImport("__Internal")]
-    private static extern void CheckGender(string gender);
+    private static extern string SetUser(string gender, string user, int money, int images);
     [DllImport("__Internal")]
-    private static extern void EnterUser(string username);
-    [DllImport("__Internal")]
-    private static extern void SaveMoney(int money);
-    [DllImport("__Internal")]
-    private static extern void SaveImages(int images);
-    public void ChooseGender(int genderIndex) {
+    private static extern string UpdateUser(string user, int money, int images);
+    public void SendNewUser() { SetUser(gender, user, money, images); }
+    public void ChangeUser() { UpdateUser(user, money, images); }
+    public void ChooseGender(int genderIndex)
+    {
 		switch (genderIndex)
 		{
             case 0:
-                CheckGender("Male");
+                gender = ("Male");
                 break;
             case 1:
-                CheckGender("Female");
+                gender = ("Female");
                 break;
             case 2:
-                CheckGender("Non-Binary");
+                gender = ("Non-Binary");
                 break;
         }
     }
-    public void ReadUser(string name) { EnterUser(name); }
-    public void ReadMoney(int playerMoney) { SaveMoney(playerMoney); }
-    public void ReadUnlocks(int playerImages) { SaveImages(playerImages); }
+    public void ReadUser(TextMeshProUGUI name) { user = name.text; }
+    public void ReadMoney() { money = FindObjectOfType<Score>().money; }
+    public void ReadUnlocks() { images = FindObjectOfType<GameManager>().unlocks; }
 }

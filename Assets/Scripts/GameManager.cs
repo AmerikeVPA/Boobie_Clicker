@@ -11,7 +11,7 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI tips; 
     public string[] txt; 
     public GameObject[] positionT; 
-    int moneyS, randNum = 0;
+    public int unlocks = 0;
     protected float timeEvent; 
     protected int num = 1;
     public GameObject boobs, panel;
@@ -66,6 +66,7 @@ public class GameManager : MonoBehaviour
             anim.SetBool("naked", true); 
             score.money -= 1000;
             display = true;
+            unlocks++;
 		}
 		else { anim.SetBool("naked", true); }
 	}

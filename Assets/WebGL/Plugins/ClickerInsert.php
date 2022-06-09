@@ -3,7 +3,7 @@ $servername  "localhost";
 $username = "D1ck";
 $password = "80085";
 $dbname = "BoobieClicker";
-// get the q parameter from URL
+// get parameters from URL
 $gender = $_REQUEST["g"];
 $user = $_REQUEST["u"];
 $money = $_REQUEST["m"];
@@ -15,8 +15,8 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "INSERT INTO datos (idDatos, level, points)
-VALUES (2, 25, 35)";
+$sql = "INSERT INTO users (user, gender, money, images)
+VALUES ($user, $gender, $money, $images)";
 
 if ($conn->query($sql) === TRUE) {
   echo "New record created successfully";

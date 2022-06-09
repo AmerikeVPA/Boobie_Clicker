@@ -1,0 +1,14 @@
+create database BoobieClicker;
+use BoobieClicker;
+
+CREATE TABLE users(
+  user VARCHAR(50) PRIMARY KEY,
+  user_date DATETIME NOT NULL,
+  gender VARCHAR(50),
+  money INTEGER UNSIGNED,
+  images INTEGER UNSIGNED,
+  FOREIGN KEY (gender)
+    REFERENCES Genre_Selection(genre_id)
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE,
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
